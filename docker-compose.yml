@@ -4,7 +4,7 @@ networks:
 
 services:
   php:
-    image: php:7-fpm
+    build: ./docker/php
     expose:
       - "9000"
     volumes:
