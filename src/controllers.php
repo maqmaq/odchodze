@@ -7,10 +7,10 @@ use Symfony\Component\HttpFoundation\Response;
 //Request::setTrustedProxies(array('127.0.0.1'));
 
 $app['document.controller'] = function() use ($app) {
-    return new \Controllers\DocumentController($app['form.factory'], $app['twig'], $app['snappy.pdf'], $app['request_stack']->getCurrentRequest());
+    return new App\Controller\DocumentController($app['form.factory'], $app['twig'], $app['pdf.generator'], $app['request_stack']->getCurrentRequest());
 };
 
-$app->match('/', 'document.controller:indexAction')->bind('homepage');
+$app->match('/', 'document.controller:formAction')->bind('homepage');
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

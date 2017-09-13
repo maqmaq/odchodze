@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace App\Controller;
 
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -11,7 +11,7 @@ class DocumentController
 
     private $formFactory;
     private $twig;
-    private $snappy;
+    private $pdfGenerator;
     private $request;
 
 
@@ -19,12 +19,12 @@ class DocumentController
     {
         $this->formFactory = $formFactory;
         $this->twig = $twig;
-        $this->snappy = $snappy;
+        $this->pdfGenerator = $snappy;
         $this->request = $request;
     }
 
 
-    public function indexAction()
+    public function formAction()
     {
         // some default data for when the form is displayed the first time
         $data = array(
@@ -43,11 +43,11 @@ class DocumentController
         if ($form->isValid()) {
             $data = $form->getData();
 
-            header('Content-Type: application/pdf');
-            header('Content-Disposition: attachment; filename="file.pdf"');
             $html = $this->twig->render('document/contract-termination.html.twig', $data);
-            echo $this->snappy->getOutputFromHtml($html);
-            die();
+            $this->pdfGenerator->AddPage();
+
+            $this->pdfGenerator->writeHTML($html);
+            $this->pdfGenerator->Output('example_001.pdf', 'I');
         }
 
         // display the form

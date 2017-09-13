@@ -28,16 +28,7 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app->register(new Silex\Provider\CsrfServiceProvider());
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 
-$app->register(new SnappyServiceProvider(), array(
-    'snappy.pdf.binary' => sprintf('%s/%s', VENDOR_PATH, 'bin/wkhtmltopdf-amd64'),
-    'snappy.pdf.options' => array(
-        'footer-center' => 'page [page]'
-    ),
-    'snappy.image.binary' => '/path/to/wkhtmltoimage',
-    'snappy.image.options' => array(
-        'format' => 'png'
-    )
-));
+$app->register(new \Pdf\Provider\PdfServiceProvider());
 
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...

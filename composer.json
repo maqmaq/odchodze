@@ -22,11 +22,9 @@
         "symfony/translation": "~2.8|3.0.*",
         "symfony/twig-bridge": "~2.8|3.0.*",
         "symfony/validator": "~2.8|3.0.*",
-        "h4cc/wkhtmltopdf-amd64": "^0.12.3",
-        "knplabs/knp-snappy": "^0.5.0",
-        "nass600/snappy-service-provider": "^2.0",
         "symfony/yaml": "^3.3",
-        "symfony/security-csrf": "^3.3"
+        "symfony/security-csrf": "^3.3",
+        "tecnickcom/tcpdf": "^6.2"
     },
     "autoload": {
         "psr-0": { "": "src/" }
@@ -35,11 +33,5 @@
         "branch-alias": {
             "dev-master": "2.0.x-dev"
         }
-    },
-    "scripts": {
-        "run": [
-            "echo 'Started web server on http://localhost:8888'",
-            "php -S localhost:8888 -t web"
-        ]
     }
 }
