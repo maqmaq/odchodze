@@ -3,7 +3,6 @@
 define ('HOME_PATH', realpath(__DIR__ . '/../'));
 define ('VENDOR_PATH', realpath(HOME_PATH . '/vendor'));
 
-use Nass600\Silex\Provider\SnappyServiceProvider;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
@@ -20,7 +19,7 @@ $app->register(new HttpFragmentServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.domains' => array(),
-    'locale_fallbacks' => array('en', 'pl'),
+    'locale_fallbacks' => array('pl'),
 
 ));
 $app->register(new Silex\Provider\LocaleServiceProvider());
@@ -29,6 +28,7 @@ $app->register(new Silex\Provider\CsrfServiceProvider());
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 
 $app->register(new \Pdf\Provider\PdfServiceProvider());
+$app->register(new \Document\Provider\DefaultDocumentServiceProvider());
 
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
@@ -37,9 +37,10 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 $app->extend('translator', function($translator, $app) {
+    /** @var $translator \Symfony\Component\Translation\Translator */
     $translator->addLoader('yaml', new YamlFileLoader());
 
-    $translator->addResource('yaml', __DIR__.'/locales/pl.yml', 'pl');
+    $translator->addResource('yaml', HOME_PATH . '/locales/pl.yml', 'pl', 'messages');
 
     return $translator;
 });

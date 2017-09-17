@@ -17,4 +17,4 @@ $app->register(new WebProfilerServiceProvider(), array(
     'profiler.cache_dir' => __DIR__.'/../var/cache/profiler',
 ));
 
-$app['locale'] = 'pl';
+//$app['locale'] = 'pl';

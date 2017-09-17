@@ -6,8 +6,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
-$app['document.controller'] = function() use ($app) {
-    return new App\Controller\DocumentController($app['form.factory'], $app['twig'], $app['pdf.generator'], $app['request_stack']->getCurrentRequest());
+$app['document.controller'] = function () use ($app) {
+    return new Document\Controller\DocumentController($app['form.factory'],
+        $app['twig'],
+        $app['pdf.generator'],
+        $app['request_stack']->getCurrentRequest(),
+        $app['document.default_document']
+    );
 };
 
 $app->match('/', 'document.controller:formAction')->bind('homepage');

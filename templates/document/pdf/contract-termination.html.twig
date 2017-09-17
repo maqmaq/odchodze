@@ -1,0 +1,52 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+
+    <div>
+        <div style="float:right">
+            {{ document.getCity() }} dnia {{ document.getDate()|date('Y-m-d') }}
+        </div>
+        <div style="float:left">
+            <div>
+                {{ document.getSenderFullName() }}
+                {{ document.getSenderAddress() }}
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div style="float:right">
+
+            <div>
+                {{ document.getRecipientFullName() }}
+                {{ document.getRecipientAddress() }}
+            </div>
+        </div>
+        <div>
+            <center>
+
+                {{ 'Termination of employment contract'|trans }}
+            </center>
+        </div>
+        <div>
+            {{ 'Please accept this letter as formal notification that I am terminating contract signet at'|trans }} {{ document.getContractDate()|date('Y-m-d') }}. {{ 'As required by my employment contract I am giving'|trans }} {{ document.getNoticeType() }} {{ 'notice'|trans }}.
+        </div>
+        <div style="float:right">
+            <div>{{ 'You’re Sincerely'|trans }}</div>
+            <div>…………………</div>
+            <div>({{ 'signature of the employee'|trans }})</div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div style="float:left">
+            <div> ………………………………………….</div>
+            <div>({{ 'signature of the employer'|trans }})</div>
+        </div>
+    </div>
+{% endblock %}
+
+
