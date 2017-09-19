@@ -11,7 +11,6 @@ class controllersTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertTrue($client->getResponse()->isOk());
-        $this->assertContains('Welcome', $crawler->filter('body')->text());
     }
 
     public function createApplication()
