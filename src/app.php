@@ -19,16 +19,25 @@ $app->register(new HttpFragmentServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.domains' => array(),
-    'locale_fallbacks' => array('pl'),
+    'locale_fallbacks' => array('en'),
 
 ));
-$app->register(new Silex\Provider\LocaleServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 $app->register(new Silex\Provider\CsrfServiceProvider());
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 
 $app->register(new \Pdf\Provider\PdfServiceProvider());
 $app->register(new \Document\Provider\DefaultDocumentServiceProvider());
+
+$app->register(new Pmaxs\Silex\Locale\Provider\LocaleServiceProvider(), [
+    'locale.locales' => ['en', 'pl'],
+    'locale.default_locale' => 'pl',
+    'locale.resolve_by_host' => false,
+    'locale.exclude_routes' => [],
+]);
+
+$app->register(new Silex\Provider\LocaleServiceProvider(), [
+]);
 
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
@@ -41,6 +50,7 @@ $app->extend('translator', function($translator, $app) {
     $translator->addLoader('yaml', new YamlFileLoader());
 
     $translator->addResource('yaml', HOME_PATH . '/locales/pl.yml', 'pl', 'messages');
+    $translator->addResource('yaml', HOME_PATH . '/locales/en.yml', 'en', 'messages');
 
     return $translator;
 });

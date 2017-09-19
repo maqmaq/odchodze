@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c94d40a2e98e1350073017efcd3ea2e9",
+    "content-hash": "04e8083a21b51f722f280d5098457829",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -177,6 +177,45 @@
                 "dependency injection"
             ],
             "time": "2015-09-11T15:10:35+00:00"
+        },
+        {
+            "name": "pmaxs/silex-locale",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pmaxs/silex-locale.git",
+                "reference": "8fefdecf15a750333041fdd1286dbce36b0cb034"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pmaxs/silex-locale/zipball/8fefdecf15a750333041fdd1286dbce36b0cb034",
+                "reference": "8fefdecf15a750333041fdd1286dbce36b0cb034",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pmaxs\\Silex\\Locale\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Silex service provider to adjust locale/language via url",
+            "homepage": "https://github.com/pmaxs/silex-locale",
+            "keywords": [
+                "locale",
+                "silex",
+                "symfony"
+            ],
+            "time": "2016-10-14T21:05:29+00:00"
         },
         {
             "name": "psr/log",

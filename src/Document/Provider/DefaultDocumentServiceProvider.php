@@ -15,7 +15,9 @@ class DefaultDocumentServiceProvider implements ServiceProviderInterface
     {
         $app['document.default_document'] = $app->factory(function () use ($app) {
 
-            $service = new DefaultDocumentService();
+            $translator = $app['translator'];
+            $service = new DefaultDocumentService($translator);
+
             return $service;
         });
     }
