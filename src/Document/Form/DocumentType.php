@@ -2,6 +2,7 @@
 
 namespace Document\Form;
 
+use Document\Model\Document;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -35,7 +36,7 @@ class DocumentType extends AbstractType
      */
     protected function getNoticeTypeChoices()
     {
-        return array_combine(\Document\Model\Document::NOTICE_TYPES, \Document\Model\Document::NOTICE_TYPES);
+        return array_combine(Document::NOTICE_TYPES, Document::NOTICE_TYPES);
     }
 
 }

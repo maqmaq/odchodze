@@ -13,13 +13,14 @@ class DefaultDocumentServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $app)
     {
-        $app['document.default_document'] = $app->factory(function () use ($app) {
+        $app['document.default_document'] = function () use ($app) {
 
             $translator = $app['translator'];
             $service = new DefaultDocumentService($translator);
 
             return $service;
-        });
+        };
     }
+
 
 }

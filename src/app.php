@@ -1,8 +1,9 @@
 <?php
 
-define ('HOME_PATH', realpath(__DIR__ . '/../'));
-define ('VENDOR_PATH', realpath(HOME_PATH . '/vendor'));
+define('HOME_PATH', realpath(__DIR__ . '/../'));
+define('VENDOR_PATH', realpath(HOME_PATH . '/vendor'));
 
+use Document\Provider\PdfDocumentGeneratorServiceProvider;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\TwigServiceProvider;
@@ -27,7 +28,10 @@ $app->register(new Silex\Provider\CsrfServiceProvider());
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 
 $app->register(new \Pdf\Provider\PdfServiceProvider());
+$app->register(new \Tcpdf\Provider\TcpdfServiceProvider());
+
 $app->register(new \Document\Provider\DefaultDocumentServiceProvider());
+$app->register(new PdfDocumentGeneratorServiceProvider());
 
 $app->register(new Pmaxs\Silex\Locale\Provider\LocaleServiceProvider(), [
     'locale.locales' => ['en', 'pl'],
@@ -45,7 +49,7 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
-$app->extend('translator', function($translator, $app) {
+$app->extend('translator', function ($translator, $app) {
     /** @var $translator \Symfony\Component\Translation\Translator */
     $translator->addLoader('yaml', new YamlFileLoader());
 

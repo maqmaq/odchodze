@@ -11,7 +11,8 @@ $app['document.controller'] = function () use ($app) {
         $app['twig'],
         $app['pdf.generator'],
         $app['request_stack']->getCurrentRequest(),
-        $app['document.default_document']
+        $app['document.default_document'],
+        $app['document.pdf_generator']
     );
 };
 

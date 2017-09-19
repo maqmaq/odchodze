@@ -30,7 +30,7 @@
             </center>
         </div>
         <div>
-            {{ 'Please accept this letter as formal notification that I am terminating contract signet at'|trans }} {{ document.getContractDate()|date('Y-m-d') }}. {{ 'As required by my employment contract I am giving'|trans }} {{ document.getNoticeType() }} {{ 'notice'|trans }}.
+            {{ 'Please accept this letter as formal notification that I am terminating contract signet at'|trans }} {{ document.getContractDate()|date('Y-m-d') }}. {{ 'As required by my employment contract I am giving'|trans }} {{ document.getNoticeType()|trans }} {{ 'notice'|trans }}.
         </div>
         <div style="float:right">
             <div>{{ 'You’re Sincerely'|trans }}</div>
