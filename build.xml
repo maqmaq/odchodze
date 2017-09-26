@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Odchodze" default="build">
+    <target name="build"></target>
+    <target name="docker:up">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="-f docker-compose.yml"/>
+            <arg line="up -d"/>
+        </exec>
+    </target>
+    <target name="docker:start">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="-f docker-compose.yml"/>
+            <arg line="start"/>
+        </exec>
+    </target>
+    <target name="docker:stop">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="-f docker-compose.yml"/>
+            <arg line="stop"/>
+        </exec>
+    </target>
+    <target name="docker:rm">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="-f docker-compose.yml"/>
+            <arg line="rm -f"/>
+        </exec>
+    </target>
+    <target name="docker:build">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="-f docker-compose.yml"/>
+            <arg line="build"/>
+        </exec>
+    </target>
+</project>

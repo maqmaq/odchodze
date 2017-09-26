@@ -25,7 +25,8 @@
         "symfony/yaml": "^3.3",
         "symfony/security-csrf": "^3.3",
         "tecnickcom/tcpdf": "^6.2",
-        "pmaxs/silex-locale": "^2.0"
+        "pmaxs/silex-locale": "^2.0",
+        "phing/phing": "^2.16"
     },
     "autoload": {
         "psr-0": { "": "src/" }

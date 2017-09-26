@@ -5,6 +5,7 @@ namespace Document\Service;
 use Document\Model\Document;
 use Symfony\Component\Translation\DataCollectorTranslator;
 use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class DefaultDocumentService
@@ -21,7 +22,7 @@ class DefaultDocumentService
      * DefaultDocumentService constructor.
      * @param DataCollectorTranslator $translator
      */
-    public function __construct(DataCollectorTranslator $translator)
+    public function __construct(TranslatorInterface $translator)
     {
         $this->translator = $translator;
     }
