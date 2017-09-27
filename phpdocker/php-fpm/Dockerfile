@@ -9,9 +9,7 @@ ADD init.sh /init.sh
 
 WORKDIR "/application"
 
-CMD ["/init.sh"]
-
-CMD /usr/bin/php-fpm
+CMD /init.sh && /usr/bin/php-fpm
 
 # Open up fcgi port
 EXPOSE 9000

@@ -2,9 +2,15 @@
 
 ## How to run it localy
 
-Run command
+Run command:
 ```bash
 php phing-latest.phar docker:up
+```
+
+Wait for composer installation to finish.
+You can check progress using:
+```bash
+docker logs -f odchodze-php-fpm
 ```
 
 Visit:
