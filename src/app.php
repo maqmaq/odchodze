@@ -1,8 +1,5 @@
 <?php
 
-define('HOME_PATH', realpath(__DIR__ . '/../'));
-define('VENDOR_PATH', realpath(HOME_PATH . '/vendor'));
-
 use Document\Provider\PdfDocumentGeneratorServiceProvider;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
@@ -53,8 +50,8 @@ $app->extend('translator', function ($translator, $app) {
     /** @var $translator \Symfony\Component\Translation\Translator */
     $translator->addLoader('yaml', new YamlFileLoader());
 
-    $translator->addResource('yaml', HOME_PATH . '/locales/pl.yml', 'pl', 'messages');
-    $translator->addResource('yaml', HOME_PATH . '/locales/en.yml', 'en', 'messages');
+    $translator->addResource('yaml', __DIR__ . '/../locales/pl.yml', 'pl', 'messages');
+    $translator->addResource('yaml', __DIR__ . '/../locales/en.yml', 'en', 'messages');
 
     return $translator;
 });
