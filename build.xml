@@ -31,4 +31,52 @@
             <arg line="build"/>
         </exec>
     </target>
+    <target name="update-dev"
+            depends="app:setup,cache:clean,composer-dev"
+            description="Aktalizacja wersji dev">
+    </target>
+    <target name="update-production"
+            depends="app:setup,cache:clean,composer,composer:optimize"
+            description="Aktalizacja wersji produkcyjnej">
+    </target>
+    <target name="cache:clean">
+        <delete includeemptydirs="true">
+            <fileset dir="var">
+                <include name="cache/*"/>
+            </fileset>
+        </delete>
+    </target>
+    <target name="app:setup">
+        <chmod file="var" mode="0777">
+            <fileset dir="var">
+                <include name="cache/"/>
+                <include name="logs/"/>
+            </fileset>
+        </chmod>
+    </target>
+    <target name="composer-dev" description="Installing dependencies with dev">
+        <exec executable="php"  passthru="true" checkreturn="true">
+            <arg value="composer.phar"/>
+            <arg value="install"/>
+            <arg value="--prefer-dist"/>
+            <arg value="--no-progress"/>
+        </exec>
+    </target>
+    <target name="composer" description="Installing dependencies without dev">
+        <exec executable="php" passthru="true" checkreturn="true">
+            <arg value="composer.phar"/>
+            <arg value="install"/>
+            <arg value="--no-dev"/>
+            <arg value="--prefer-dist"/>
+            <arg value="--no-progress"/>
+            <arg value="--optimize-autoloader"/>
+        </exec>
+    </target>
+    <target name="composer:optimize">
+        <exec executable="php" passthru="true" checkreturn="true">
+            <arg value="composer.phar"/>
+            <arg value="dump-autoload"/>
+            <arg value="--optimize"/>
+        </exec>
+    </target>
 </project>

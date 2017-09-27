@@ -5,5 +5,13 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install  php7.1-mysql php-xdebug php7.1-mbstring \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
+ADD init.sh /init.sh
 
 WORKDIR "/application"
+
+CMD ["/init.sh"]
+
+CMD /usr/bin/php-fpm
+
+# Open up fcgi port
+EXPOSE 9000
